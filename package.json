@@ -1,0 +1,22 @@
+{
+  "name": "pomodoro",
+  "version": "1.0.0",
+  "description": "\"Pomodoro app\"",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddrppx/pomodoro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddrppx/pomodoro/issues"
+  },
+  "homepage": "https://github.com/ddrppx/pomodoro#readme",
+  "devDependencies": {
+    "electron": "^23.2.1"
+  }
+}
