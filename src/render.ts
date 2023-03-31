@@ -54,5 +54,5 @@ const pause_clock_button = document.getElementById('pause')
 const stop_clock_button = document.getElementById('stop')
 
 start_clock_button!.addEventListener("click", startClock)
-pause_clock_button!.addEventListener("click", pauseClock)
-stop_clock_button!.addEventListener("click", stopClock)
+// pause_clock_button!.addEventListener("click", pauseClock)
+// stop_clock_button!.addEventListener("click", stopClock)

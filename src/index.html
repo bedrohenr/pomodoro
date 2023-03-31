@@ -6,13 +6,20 @@
           http-equiv="Content-Security-Policy"
           content="default-src 'self'; script-src 'self'"
         />
+        <link rel="stylesheet" type="text/css" href="index.css"></link>
         <title>Pomodoro - Electron</title>
     </head>
     <body>
-        <div id="clock">00:00</div>
-        <button id="start">Start</button>
-        <button id="pause">Pause</button>
-        <button id="stop">Stop</button>
+        <div id="main">
+            <div id="clock" class="timer center">00:00</div>
+            <div id="buttons" class="center">
+                <button id="start" class="">
+                    <div class="center">Start</div>
+                </button>
+                <!-- <button id="pause">Pause</button> -->
+                <!-- <button id=" stop">Stop</button> -->
+            </div>
+        </div>
         <script src="../dist/render.js" defer></script>
     </body>
 </html>

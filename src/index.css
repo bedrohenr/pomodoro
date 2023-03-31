@@ -1,0 +1,22 @@
+/* * { */
+/*     border: 1px solid black; */
+/* } */
+
+.center {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.timer {
+    font-size: 72px;
+}
+
+button {
+    height: 44px;
+    width: 101px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+
