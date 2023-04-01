@@ -6,8 +6,9 @@ const createWindow = (): void => {
         height: 250
     });
 
+    mainWindow.removeMenu();
     mainWindow.loadFile('src/index.html');
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 }
 
 app.on('ready', createWindow)
