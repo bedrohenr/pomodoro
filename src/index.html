@@ -9,15 +9,16 @@
         <link rel="stylesheet" type="text/css" href="index.css"></link>
         <title>Pomodoro - Electron</title>
     </head>
-    <body>
-        <div id="main">
-            <div id="clock" class="timer center">00:00</div>
-            <div id="buttons" class="center">
-                <button id="start" class="">
-                    <div class="center">Start</div>
+    <body class="background center">
+        <div id="main" class="center">
+            <div id="clock" class="timer">00:00</div>
+            <div id="buttons" class="">
+                <button id="start" class="start">
+                    <div class="">Start</div>
                 </button>
-                <!-- <button id="pause">Pause</button> -->
-                <!-- <button id=" stop">Stop</button> -->
+                <button id="pause" class="pause">Pause</button>
+                <button id="continue" class="continue">Pause</button>
+                <button id="stop" class="stop">Stop</button>
             </div>
         </div>
         <script src="../dist/render.js" defer></script>
