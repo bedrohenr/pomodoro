@@ -4,7 +4,9 @@ const createWindow = (): void => {
     const mainWindow = new BrowserWindow({
         width: 300,
         height: 250,
-        titleBarStyle: 'hidden'
+        frame: false,
+        resizable: false,
+        focusable: true,
     });
 
     mainWindow.removeMenu();
