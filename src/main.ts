@@ -3,7 +3,8 @@ import { app, BrowserWindow } from 'electron';
 const createWindow = (): void => {
     const mainWindow = new BrowserWindow({
         width: 300,
-        height: 250
+        height: 250,
+        titleBarStyle: 'hidden'
     });
 
     mainWindow.removeMenu();
