@@ -16,7 +16,7 @@
     src: url('./assets/fonts/Inter-Regular.ttf')
 }
 
-* {
+body {
     font-family: 'inter', Arial, sans-serif;
 }
 
@@ -55,11 +55,14 @@
     color: var(--text);
 }
 
-.min-icon {
-    width: 20px;
-    height: 9px;
-    padding-right: 5px;
-    color: var(--text);
+#close-icon:hover {
+    color: red;
+}
+
+#min-icon:hover {
+    color: yellow;
+}
+
 }
 
 .center {
