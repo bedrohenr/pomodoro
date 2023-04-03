@@ -20,6 +20,18 @@
     font-family: 'inter', Arial, sans-serif;
 }
 
+
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 .center {
     display: flex;
     align-items: center;
@@ -39,8 +51,10 @@ button {
     font-size: 20px;
 }
 
-.background {
+.use-full-height {
     height: 100vh;
+}
+.background {
     margin: 0px;
     padding: 0px;
     background-color: var(--background);
