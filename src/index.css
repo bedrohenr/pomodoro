@@ -20,6 +20,22 @@
     font-family: 'inter', Arial, sans-serif;
 }
 
+.title-bar {
+    width: 100vw;
+    padding: 0px;
+    margin: 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.title-bar > div {
+    padding: 10px;
+    margin: 0px;
+    width: 100vw;
+}
 
 #title {
     display: flex;
@@ -32,10 +48,24 @@
     align-items: center;
     justify-content: flex-end;
 }
+
+.svg-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--text);
+}
+
+.min-icon {
+    width: 20px;
+    height: 9px;
+    padding-right: 5px;
+    color: var(--text);
+}
+
 .center {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
 }
 
