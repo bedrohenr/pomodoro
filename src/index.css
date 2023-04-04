@@ -111,7 +111,16 @@ button {
     -webkit-app-region: no-drag; 
 }
 
-object {
-    width: 18px;
-    margin: 5px;
+#close-icon {
+    z-index: 2;
 }
+
+#min-icon {
+    z-index: 2;
+}
+svg {
+    width: 16px;
+    margin: 3px;
+    z-index: 1;
+}
+
