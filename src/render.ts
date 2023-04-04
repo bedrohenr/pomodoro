@@ -1,8 +1,21 @@
+import { ipcRenderer } from 'electron';
+
 let intervalId: ReturnType<typeof setInterval>;
 let seconds: number = 0;
 let minutes: number = 0;
 
+/* CLOCK ACTION BUTTONS */
+const start_clock_button = document.getElementById('start')
+const pause_clock_button = document.getElementById('pause')
+const stop_clock_button = document.getElementById('stop')
+
+/* ACTION BUTTONS */
+const min_icon = document.getElementById('min-icon');
+const close_icon = document.getElementById('close-icon');
+
 const clock = document.getElementById('clock');
+
+/* CLOCK FUNCTIONALITY */
 
 const clockWork = (): void => {
     if (seconds + 1 > 59) {
@@ -51,11 +64,22 @@ const stopClock = (): void => {
     seconds = 0;
     updateClock(0, 0);
 }
+/* WINDOW ACTION FUNCTIONS */
+const minimizeApp = (): void => {
+    ipcRenderer.send('minimize');
+}
 
-const start_clock_button = document.getElementById('start')
-const pause_clock_button = document.getElementById('pause')
-const stop_clock_button = document.getElementById('stop')
+const closeApp = (): void => {
+    ipcRenderer.send('close');
+}
+
+/* CLOCK BUTTON EVENTS */
 
 start_clock_button!.addEventListener("click", startClock)
 // pause_clock_button!.addEventListener("click", pauseClock)
 // stop_clock_button!.addEventListener("click", stopClock)
+
+/* WINDOW ACTIONS */
+
+min_icon!.addEventListener("click", minimizeApp)
+close_icon!.addEventListener("click", closeApp)
