@@ -27,10 +27,13 @@ const updateClock = (minutes: number, seconds: number): void => {
 }
 
 const startClock = async (): Promise<void> => {
-    intervalId = setInterval(() => {
-        clockWork();
-        updateClock(minutes, seconds);
-    }, 1000)
+    if(!intervalId){
+        console.log('started')
+        intervalId = setInterval(() => {
+            clockWork();
+            updateClock(minutes, seconds);
+        }, 1000)
+    } 
 }
 
 const stopTimeLoop = (): void => {
