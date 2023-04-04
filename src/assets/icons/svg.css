@@ -1,0 +1,15 @@
+#min-icon {
+    color: var(--text)
+}
+
+#min-icon:hover {
+    color: yellow;
+}
+
+#close-icon {
+    color: var(--text)
+}
+
+#close-icon:hover {
+    color: red;
+}
