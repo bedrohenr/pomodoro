@@ -46,7 +46,14 @@ const runClock = () => {
         updateClock(minutes, seconds);
     }, 1000)
 }
-    } 
+
+const restartClock = () => {
+    runClock();
+
+    continue_clock_button!.style.display = 'none';
+    stop_clock_button!.style.display = 'none';
+    pause_clock_button!.style.display = 'initial';
+
 }
 
 const startClock = async (): Promise<void> => {
