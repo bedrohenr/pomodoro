@@ -1,15 +1,27 @@
-#min-icon {
-    color: var(--text)
+svg {
+    width: 16px;
+    margin: 3px;
+    z-index: 1;
 }
 
-#min-icon:hover {
-    color: yellow;
+#min-icon {
+    z-index: 2;
+    color: var(--text);
+    outline: 1px solid rgba(255,0,0, 0);
 }
 
 #close-icon {
-    color: var(--text)
+    z-index: 2;
+    color: var(--text);
+    outline: 1px solid rgba(255,0,0, 0);
 }
 
-#close-icon:hover {
-    color: red;
+#min-icon, #close-icon {
+    border-radius: 5px;
 }
+
+#min-icon:hover, #close-icon:hover {
+    outline: 1px solid var(--text)
+}
+
+

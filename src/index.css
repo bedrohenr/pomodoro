@@ -110,17 +110,3 @@ button {
 .no-drag {
     -webkit-app-region: no-drag; 
 }
-
-#close-icon {
-    z-index: 2;
-}
-
-#min-icon {
-    z-index: 2;
-}
-svg {
-    width: 16px;
-    margin: 3px;
-    z-index: 1;
-}
-
