@@ -48,6 +48,12 @@ const startClock = async (): Promise<void> => {
             updateClock(minutes, seconds);
         }, 1000)
     } 
+
+const startClock = async (): Promise<void> => {
+    runClock();
+
+    start_clock_button!.style.display = 'none';
+    pause_clock_button!.style.display = 'initial'
 }
 
 const stopTimeLoop = (): void => {
