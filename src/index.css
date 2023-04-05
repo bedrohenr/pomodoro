@@ -51,6 +51,14 @@ body {
     padding: 10px;
 }
 
+#buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 10px;
+}
+
 .center {
     display: flex;
     align-items: center;
