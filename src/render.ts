@@ -58,10 +58,16 @@ const startClock = async (): Promise<void> => {
 
 const stopTimeLoop = (): void => {
     clearInterval(intervalId);
+
+    
 }
 
 const pauseClock = (): void => {
     stopTimeLoop();
+
+    pause_clock_button!.style.display = 'none';
+    continue_clock_button!.style.display = 'initial';
+    stop_clock_button!.style.display = 'initial';
 }
 
 const stopClock = (): void => {
