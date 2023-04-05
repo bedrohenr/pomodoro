@@ -83,6 +83,11 @@ const stopClock = (): void => {
     minutes = 0;
     seconds = 0;
     updateClock(0, 0);
+
+    pause_clock_button!.style.display = 'none';
+    continue_clock_button!.style.display = 'none';
+    stop_clock_button!.style.display = 'none';
+    start_clock_button!.style.display = 'initial';
 }
 /* WINDOW ACTION FUNCTIONS */
 const minimizeApp = (): void => {
