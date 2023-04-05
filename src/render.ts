@@ -7,6 +7,7 @@ let minutes: number = 0;
 /* CLOCK ACTION BUTTONS */
 const start_clock_button = document.getElementById('start')
 const pause_clock_button = document.getElementById('pause')
+const continue_clock_button = document.getElementById('continue')
 const stop_clock_button = document.getElementById('stop')
 
 /* ACTION BUTTONS */
@@ -75,9 +76,10 @@ const closeApp = (): void => {
 
 /* CLOCK BUTTON EVENTS */
 
-start_clock_button!.addEventListener("click", startClock)
-// pause_clock_button!.addEventListener("click", pauseClock)
-// stop_clock_button!.addEventListener("click", stopClock)
+start_clock_button!.addEventListener("click", startClock);
+pause_clock_button!.addEventListener("click", pauseClock);
+continue_clock_button!.addEventListener("click", restartClock);
+stop_clock_button!.addEventListener("click", stopClock);
 
 /* WINDOW ACTIONS */
 
