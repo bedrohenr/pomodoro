@@ -40,14 +40,14 @@ const updateClock = (minutes: number, seconds: number): void => {
     clock!.innerText = `${show_minutes}:${show_seconds}`;
 }
 
-const startClock = async (): Promise<void> => {
-    if(!intervalId){
-        console.log('started')
-        intervalId = setInterval(() => {
-            clockWork();
-            updateClock(minutes, seconds);
-        }, 1000)
+const runClock = () => {
+    intervalId = setInterval(() => {
+        clockWork();
+        updateClock(minutes, seconds);
+    }, 1000)
+}
     } 
+}
 
 const startClock = async (): Promise<void> => {
     runClock();
