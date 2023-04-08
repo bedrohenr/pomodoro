@@ -22,16 +22,18 @@ const runClockwise = (): void => {
     if (seconds + 1 > 59) {
         minutes++;
         seconds = 0
+    } else {
+        seconds++;
     }
-    seconds++;
 }
 
 const runAntiClockwise = (): void => {
     if (seconds == 0) {
         seconds = 59
         minutes--;
+    } else {
+        seconds--;
     }
-    seconds--;
 }
 
 const timerWork = (): void => {
