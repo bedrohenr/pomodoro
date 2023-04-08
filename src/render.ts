@@ -18,12 +18,24 @@ const clock = document.getElementById('clock');
 
 /* CLOCK FUNCTIONALITY */
 
-const clockWork = (): void => {
+const runClockwise = (): void => {
     if (seconds + 1 > 59) {
         minutes++;
         seconds = 0
     }
     seconds++;
+}
+
+const runAntiClockwise = (): void => {
+    if (seconds == 0) {
+        seconds = 59
+        minutes--;
+    }
+    seconds--;
+}
+
+const clockWork = (): void => {
+    runClockwise();
 }
 
 const display = (time: number): string => {
@@ -65,8 +77,6 @@ const startClock = async (): Promise<void> => {
 
 const stopTimeLoop = (): void => {
     clearInterval(intervalId);
-
-    
 }
 
 const pauseClock = (): void => {
