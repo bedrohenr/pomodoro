@@ -4,19 +4,19 @@ let intervalId: ReturnType<typeof setInterval>;
 let seconds: number = 0;
 let minutes: number = 0;
 
-/* CLOCK ACTION BUTTONS */
-const start_clock_button = document.getElementById('start')
-const pause_clock_button = document.getElementById('pause')
-const continue_clock_button = document.getElementById('continue')
-const stop_clock_button = document.getElementById('stop')
+/* TIMER ACTION BUTTONS */
+const start_timer_button = document.getElementById('start')
+const pause_timer_button = document.getElementById('pause')
+const continue_timer_button = document.getElementById('continue')
+const stop_timer_button = document.getElementById('stop')
 
 /* ACTION BUTTONS */
 const min_icon = document.getElementById('min-icon');
 const close_icon = document.getElementById('close-icon');
 
-const clock = document.getElementById('clock');
+const timer = document.getElementById('clock');
 
-/* CLOCK FUNCTIONALITY */
+/* TIMER FUNCTIONALITY */
 
 const runClockwise = (): void => {
     if (seconds + 1 > 59) {
@@ -34,7 +34,7 @@ const runAntiClockwise = (): void => {
     seconds--;
 }
 
-const clockWork = (): void => {
+const timerWork = (): void => {
     runClockwise();
 }
 
@@ -45,59 +45,58 @@ const display = (time: number): string => {
     return `${time}`;
 }
 
-const updateClock = (minutes: number, seconds: number): void => {
+const updateTimer = (minutes: number, seconds: number): void => {
     let show_minutes: string = display(minutes);
     let show_seconds: string = display(seconds);
 
-    clock!.innerText = `${show_minutes}:${show_seconds}`;
+    timer!.innerText = `${show_minutes}:${show_seconds}`;
 }
 
-const runClock = () => {
+const runTimer = () => {
     intervalId = setInterval(() => {
-        clockWork();
-        updateClock(minutes, seconds);
+        timerWork();
+        updateTimer(minutes, seconds);
     }, 1000)
 }
 
-const restartClock = () => {
-    runClock();
+const restartTimer = () => {
+    runTimer();
 
-    continue_clock_button!.style.display = 'none';
-    stop_clock_button!.style.display = 'none';
-    pause_clock_button!.style.display = 'initial';
-
+    continue_timer_button!.style.display = 'none';
+    stop_timer_button!.style.display = 'none';
+    pause_timer_button!.style.display = 'initial';
 }
 
-const startClock = async (): Promise<void> => {
-    runClock();
+const startTimer = async (): Promise<void> => {
+    runTimer();
 
-    start_clock_button!.style.display = 'none';
-    pause_clock_button!.style.display = 'initial'
+    start_timer_button!.style.display = 'none';
+    pause_timer_button!.style.display = 'initial'
 }
 
 const stopTimeLoop = (): void => {
     clearInterval(intervalId);
 }
 
-const pauseClock = (): void => {
+const pauseTimer = (): void => {
     stopTimeLoop();
 
-    pause_clock_button!.style.display = 'none';
-    continue_clock_button!.style.display = 'initial';
-    stop_clock_button!.style.display = 'initial';
+    pause_timer_button!.style.display = 'none';
+    continue_timer_button!.style.display = 'initial';
+    stop_timer_button!.style.display = 'initial';
 }
 
-const stopClock = (): void => {
+const stopTimer = (): void => {
     stopTimeLoop();
 
     minutes = 0;
     seconds = 0;
-    updateClock(0, 0);
+    updateTimer(0, 0);
 
-    pause_clock_button!.style.display = 'none';
-    continue_clock_button!.style.display = 'none';
-    stop_clock_button!.style.display = 'none';
-    start_clock_button!.style.display = 'initial';
+    pause_timer_button!.style.display = 'none';
+    continue_timer_button!.style.display = 'none';
+    stop_timer_button!.style.display = 'none';
+    start_timer_button!.style.display = 'initial';
 }
 /* WINDOW ACTION FUNCTIONS */
 const minimizeApp = (): void => {
@@ -108,12 +107,12 @@ const closeApp = (): void => {
     ipcRenderer.send('close');
 }
 
-/* CLOCK BUTTON EVENTS */
+/* TIMER BUTTON EVENTS */
 
-start_clock_button!.addEventListener("click", startClock);
-pause_clock_button!.addEventListener("click", pauseClock);
-continue_clock_button!.addEventListener("click", restartClock);
-stop_clock_button!.addEventListener("click", stopClock);
+start_timer_button!.addEventListener("click", startTimer);
+pause_timer_button!.addEventListener("click", pauseTimer);
+continue_timer_button!.addEventListener("click", restartTimer);
+stop_timer_button!.addEventListener("click", stopTimer);
 
 /* WINDOW ACTIONS */
 
