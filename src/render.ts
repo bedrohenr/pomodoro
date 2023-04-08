@@ -1,8 +1,13 @@
 import { ipcRenderer } from 'electron';
 
+const CLOCK_TIME = 25; // minutes
+const BREAK_TIME = 5; // minutes
+
 let intervalId: ReturnType<typeof setInterval>;
 let seconds: number = 0;
 let minutes: number = 0;
+// 0: Off, 1: On, 2: On pause
+let timerStatus: number = 0;
 
 /* TIMER ACTION BUTTONS */
 const start_timer_button = document.getElementById('start')
@@ -37,7 +42,55 @@ const runAntiClockwise = (): void => {
 }
 
 const timerWork = (): void => {
-    runClockwise();
+    console.log('timer work');
+    console.log('status: ', timerStatus)
+    if(timerStatus === 1) {
+        console.log('status 1')
+        runClockwise();
+    } else if (timerStatus === 2){
+        console.log('status 2')
+        runAntiClockwise();
+    }
+}
+
+const timerEnd = ():void => {
+    console.log('timer end')
+    switch(timerStatus){
+        case 1:
+            console.log('case 1')
+            stopTimer();
+            timerStatus = 2;
+            minutes = BREAK_TIME;
+            updateTimer(BREAK_TIME, 0);
+            break;
+       case 2:
+            console.log('case 2')
+            stopTimer();
+            timerStatus = 1;
+            updateTimer(0, 0);
+            break;
+    }
+}
+
+const resetTimer = ():void => {
+    switch(timerStatus){
+        case 1:
+            minutes = 0;
+            seconds = 0;
+            timerStatus = 0;
+            break;
+        case 2:
+            minutes = 5;
+            seconds = 0;
+            timerStatus = 2;
+            break;
+    }
+}
+
+const timerBreak = (): void => {
+    minutes = 5;
+    seconds = 0;
+    runAntiClockwise()
 }
 
 const display = (time: number): string => {
@@ -55,11 +108,26 @@ const updateTimer = (minutes: number, seconds: number): void => {
 }
 
 const runTimer = () => {
-    intervalId = setInterval(() => {
+    if(timerStatus == 0) { 
+        console.log('hello');
+        timerStatus = 1;
+    }
+    intervalId = setInterval(timerFunctionality, 1000)
+}
+
+const timerFunctionality = (): void => {
         timerWork();
         updateTimer(minutes, seconds);
-    }, 1000)
-}
+
+        // TODO: DO BETTER
+        if (
+            ( timerStatus === 1 && minutes === CLOCK_TIME ) ||
+            ( timerStatus === 2 && !minutes && !seconds )
+        ){
+            console.log('ended')
+            timerEnd();
+        }
+    }
 
 const restartTimer = () => {
     runTimer();
@@ -69,7 +137,7 @@ const restartTimer = () => {
     pause_timer_button!.style.display = 'initial';
 }
 
-const startTimer = async (): Promise<void> => {
+const startTimer = (): void => {
     runTimer();
 
     start_timer_button!.style.display = 'none';
@@ -89,6 +157,7 @@ const pauseTimer = (): void => {
 }
 
 const stopTimer = (): void => {
+    timerStatus = 0;
     stopTimeLoop();
 
     minutes = 0;
