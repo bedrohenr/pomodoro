@@ -59,7 +59,8 @@ const timerEnd = ():void => {
             console.log('case 2')
             stopTimer();
             timerStatus = 1;
-            updateTimer(0, 0);
+            minutes = CLOCK_TIME;
+            updateTimer(CLOCK_TIME, 0);
             break;
     }
 }
