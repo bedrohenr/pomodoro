@@ -189,3 +189,7 @@ stop_timer_button!.addEventListener("click", stopTimer);
 
 min_icon!.addEventListener("click", minimizeApp)
 close_icon!.addEventListener("click", closeApp)
+
+/* SETS THE TIMER to assigned value (Ignore html)
+*/
+updateTimer(minutes, seconds);
