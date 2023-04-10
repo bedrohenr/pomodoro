@@ -4,8 +4,7 @@ const CLOCK_TIME = 25; // minutes
 const BREAK_TIME = 5; // minutes
 
 let intervalId: ReturnType<typeof setInterval>;
-let seconds: number = 0;
-let minutes: number = 0;
+let minutes: number = CLOCK_TIME;
 // 0: Off, 1: On, 2: On pause
 let timerStatus: number = 0;
 
@@ -42,15 +41,8 @@ const runAntiClockwise = (): void => {
 }
 
 const timerWork = (): void => {
-    console.log('timer work');
     console.log('status: ', timerStatus)
-    if(timerStatus === 1) {
-        console.log('status 1')
-        runClockwise();
-    } else if (timerStatus === 2){
-        console.log('status 2')
-        runAntiClockwise();
-    }
+    runAntiClockwise();
 }
 
 const timerEnd = ():void => {
@@ -121,8 +113,8 @@ const timerFunctionality = (): void => {
 
         // TODO: DO BETTER
         if (
-            ( timerStatus === 1 && minutes === CLOCK_TIME ) ||
-            ( timerStatus === 2 && !minutes && !seconds )
+            ( timerStatus === 1 && (!minutes && !seconds) ) ||
+            ( timerStatus === 2 && (!minutes && !seconds) )
         ){
             console.log('ended')
             timerEnd();
