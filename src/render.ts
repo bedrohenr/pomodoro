@@ -1,11 +1,14 @@
 import { ipcRenderer } from 'electron';
 
-const CLOCK_TIME = 25; // minutes
-const BREAK_TIME = 5; // minutes
+const INIT_TIMER_MINUTES = 25; // minutes
+const INIT_TIMER_SECONDS = 0; // seconds
+
+const BREAK_TIMER_MINUTES = 5; // minutes
+const BREAK_TIMER_SECONDS = 0; // seconds
 
 let intervalId: ReturnType<typeof setInterval>;
-let seconds: number = 0;
-let minutes: number = CLOCK_TIME;
+let minutes: number = INIT_TIMER_MINUTES;
+let seconds: number = INIT_TIMER_SECONDS;
 // 0: Off, 1: On, 2: On pause
 let timerStatus: number = 0;
 
@@ -22,7 +25,6 @@ const timer = document.getElementById('timer');
 
 
 /* TIMER FUNCTIONALITY */
-
 const runClockwise = (): void => {
     if (seconds + 1 > 59) {
         minutes++;
@@ -54,15 +56,17 @@ const timerEnd = ():void => {
             console.log('case 1')
             stopTimer();
             timerStatus = 2;
-            minutes = BREAK_TIME;
-            updateTimer(BREAK_TIME, 0);
+            minutes = BREAK_TIMER_MINUTES;
+            seconds = BREAK_TIMER_SECONDS;
+            updateTimer(BREAK_TIMER_MINUTES, BREAK_TIMER_SECONDS);
             break;
        case 2:
             console.log('case 2')
             stopTimer();
             timerStatus = 1;
-            minutes = CLOCK_TIME;
-            updateTimer(CLOCK_TIME, 0);
+            minutes = INIT_TIMER_MINUTES;
+            seconds = INIT_TIMER_SECONDS;
+            updateTimer(INIT_TIMER_MINUTES, INIT_TIMER_SECONDS);
             break;
     }
 }
@@ -70,22 +74,16 @@ const timerEnd = ():void => {
 const resetTimer = ():void => {
     switch(timerStatus){
         case 1:
-            minutes = 0;
-            seconds = 0;
+            minutes = INIT_TIMER_MINUTES;
+            seconds = INIT_TIMER_SECONDS;
             timerStatus = 0;
             break;
         case 2:
-            minutes = 5;
-            seconds = 0;
+            minutes = BREAK_TIMER_MINUTES;
+            seconds = BREAK_TIMER_SECONDS;
             timerStatus = 2;
             break;
     }
-}
-
-const timerBreak = (): void => {
-    minutes = 5;
-    seconds = 0;
-    runAntiClockwise()
 }
 
 const display = (time: number): string => {
@@ -155,17 +153,17 @@ const stopTimer = (): void => {
     switch(timerStatus){
         case 1:
             console.log('stop case 1')
-            minutes = CLOCK_TIME;
-            seconds = 0;
+            minutes = INIT_TIMER_MINUTES;
+            seconds = INIT_TIMER_SECONDS;
 
-            updateTimer(CLOCK_TIME, 0);
+            updateTimer(INIT_TIMER_MINUTES, INIT_TIMER_SECONDS);
             break;
        case 2:
             console.log('stop case 2')
-            minutes = BREAK_TIME;
-            seconds = 0;
+            minutes = BREAK_TIMER_MINUTES;
+            seconds = BREAK_TIMER_SECONDS;
 
-            updateTimer(BREAK_TIME, 0);
+            updateTimer(BREAK_TIMER_MINUTES, BREAK_TIMER_SECONDS);
             break;
     }
 
@@ -182,9 +180,9 @@ const stopTimer = (): void => {
 /* TIMER PROGRESS */ 
 
 const calcPercentage = ():number => {
-    const running_clock = (timerStatus == 1)? CLOCK_TIME : BREAK_TIME;
-    const now = running_clock*60 - ((minutes*60) + seconds);
-    const total = running_clock * 60;
+    const running_timer = (timerStatus == 1)? ((INIT_TIMER_MINUTES * 60) + INIT_TIMER_SECONDS) : ((BREAK_TIMER_MINUTES * 60) + BREAK_TIMER_SECONDS);
+    const now = running_timer - ((minutes*60) + seconds);
+    const total = running_timer;
 
     console.log('now:', now)
     console.log('total:', total)
