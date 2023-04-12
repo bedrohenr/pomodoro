@@ -1,12 +1,17 @@
 :root {
-    --background: #6b2020;
+    --background: #6B2020;
+
     --text: #EAE4E4;
+
     --start_button_background: #75AC5A;
     --start_button_color: #EAE4E4;
+
     --pause_button_background: #6E96D2;
     --pause_button_color: #EAE4E4;
+
     --continue_button_background: #6E96D2;
     --continue_button_color: #EAE4E4;
+
     --stop_button_background: #B75E63;
     --stop_button_color: #EAE4E4;
 }
@@ -67,18 +72,23 @@ body {
 }
 
 .timer {
-    font-size: 72px;
+    font-size: 30vh;
     color: #EAE4E4;
 }
 
 button {
-    height: 44px;
-    width: 101px;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 10vh;
+
     border: 1px solid rgba(255, 0, 0, 0);
-    margin-left: 5px;
-    margin-right: 5px;
+
+    margin-left: 2vw;
+    margin-right: 2vw;
+
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    padding-left: 7vw;
+    padding-right: 7vw;
 }
 
 button:hover {
