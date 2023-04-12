@@ -76,6 +76,12 @@ button {
     width: 101px;
     border-radius: 5px;
     font-size: 20px;
+    border: 1px solid rgba(255, 0, 0, 0);
+}
+
+button:hover {
+    filter: brightness(85%);
+    cursor: pointer;
 }
 
 .use-full-height {
