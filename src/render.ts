@@ -112,11 +112,7 @@ const timerFunctionality = (): void => {
         timerWork();
         updateTimer(minutes, seconds);
 
-        // TODO: DO BETTER
-        if (
-            ( timerStatus === 1 && (!minutes && !seconds) ) ||
-            ( timerStatus === 2 && (!minutes && !seconds) )
-        ){
+        if (!minutes && !seconds){
             console.log('ended')
             timerEnd();
         }
