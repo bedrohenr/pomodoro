@@ -73,7 +73,10 @@ body {
 
 .timer {
     font-size: 30vh;
-    color: #EAE4E4;
+    height: 23vh;
+    display: flex;
+    align-items: center;
+    color: var(--text);
 }
 
 button {

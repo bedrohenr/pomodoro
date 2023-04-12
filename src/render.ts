@@ -4,6 +4,7 @@ const CLOCK_TIME = 25; // minutes
 const BREAK_TIME = 5; // minutes
 
 let intervalId: ReturnType<typeof setInterval>;
+let seconds: number = 0;
 let minutes: number = CLOCK_TIME;
 // 0: Off, 1: On, 2: On pause
 let timerStatus: number = 0;
@@ -43,6 +44,7 @@ const runAntiClockwise = (): void => {
 const timerWork = (): void => {
     console.log('status: ', timerStatus)
     runAntiClockwise();
+    updateTimerProgress();
 }
 
 const timerEnd = ():void => {
@@ -169,6 +171,7 @@ const stopTimer = (): void => {
 
     timerStatus = 0;
     stopTimeLoop();
+    updateTimerProgress(0)
 
     pause_timer_button!.style.display = 'none';
     continue_timer_button!.style.display = 'none';
@@ -176,7 +179,29 @@ const stopTimer = (): void => {
     start_timer_button!.style.display = 'initial';
 }
 
+/* TIMER PROGRESS */ 
+
+const calcPercentage = ():number => {
+    const running_clock = (timerStatus == 1)? CLOCK_TIME : BREAK_TIME;
+    const now = running_clock*60 - ((minutes*60) + seconds);
+    const total = running_clock * 60;
+
+    console.log('now:', now)
+    console.log('total:', total)
+    return now*100/total;
+}
+
+const updateTimerProgress = (percentage: number = calcPercentage()):void => {
+    const cssText = `
+        background: -webkit-linear-gradient(90deg, var(--continue_button_background) ${percentage}%, var(--text) ${percentage}%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent` ;
+    console.log(cssText);
+    timer!.style.cssText = cssText;
+}
+
 /* WINDOW ACTION FUNCTIONS */
+
 const minimizeApp = (): void => {
     ipcRenderer.send('minimize');
 }
