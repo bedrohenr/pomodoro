@@ -150,18 +150,32 @@ const pauseTimer = (): void => {
 }
 
 const stopTimer = (): void => {
+    switch(timerStatus){
+        case 1:
+            console.log('stop case 1')
+            minutes = CLOCK_TIME;
+            seconds = 0;
+
+            updateTimer(CLOCK_TIME, 0);
+            break;
+       case 2:
+            console.log('stop case 2')
+            minutes = BREAK_TIME;
+            seconds = 0;
+
+            updateTimer(BREAK_TIME, 0);
+            break;
+    }
+
     timerStatus = 0;
     stopTimeLoop();
-
-    minutes = 0;
-    seconds = 0;
-    updateTimer(0, 0);
 
     pause_timer_button!.style.display = 'none';
     continue_timer_button!.style.display = 'none';
     stop_timer_button!.style.display = 'none';
     start_timer_button!.style.display = 'initial';
 }
+
 /* WINDOW ACTION FUNCTIONS */
 const minimizeApp = (): void => {
     ipcRenderer.send('minimize');
