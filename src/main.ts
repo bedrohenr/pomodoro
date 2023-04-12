@@ -5,7 +5,6 @@ const createWindow = (): void => {
         width: 300,
         height: 250,
         frame: false,
-        resizable: false,
         focusable: true,
         webPreferences: {
             nodeIntegration: true,
