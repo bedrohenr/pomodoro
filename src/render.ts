@@ -17,8 +17,8 @@ const stop_timer_button = document.getElementById('stop')
 /* ACTION BUTTONS */
 const min_icon = document.getElementById('min-icon');
 const close_icon = document.getElementById('close-icon');
+const timer = document.getElementById('timer');
 
-const timer = document.getElementById('clock');
 
 /* TIMER FUNCTIONALITY */
 
