@@ -11,7 +11,7 @@ const createWindow = (): void => {
             contextIsolation: false
         }
     });
-
+    // Teste
     mainWindow.removeMenu();
     mainWindow.loadFile('src/index.html');
     mainWindow.webContents.openDevTools();
