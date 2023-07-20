@@ -68,6 +68,9 @@ const timerEnd = ():void => {
             updateTimer(INIT_TIMER_MINUTES, INIT_TIMER_SECONDS);
             break;
     }
+
+    showNotif(`Pomodoro App`, `Timer has ran out.`);
+    clock_finish_sound.play();
 }
 
 const resetTimer = ():void => {
@@ -128,6 +131,9 @@ const startTimer = (): void => {
 
     start_timer_button!.style.display = 'none';
     pause_timer_button!.style.display = 'initial'
+
+    showNotif(`Pomodoro App`, `Timer is running.`);
+    clock_start_sound.play();
 }
 
 const stopTimeLoop = (): void => {
@@ -194,6 +200,10 @@ const minimizeApp = (): void => {
 
 const closeApp = (): void => {
     ipcRenderer.send('close');
+}
+
+const showNotif = (title: string, body: string): void => {
+    ipcRenderer.send('showNotif', title, body);
 }
 
 /* TIMER BUTTON EVENTS */
