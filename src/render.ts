@@ -44,16 +44,13 @@ const runAntiClockwise = (): void => {
 }
 
 const timerWork = (): void => {
-    console.log('status: ', timerStatus)
     runAntiClockwise();
     updateTimerProgress();
 }
 
 const timerEnd = ():void => {
-    console.log('timer end')
     switch(timerStatus){
         case 1:
-            console.log('case 1')
             stopTimer();
             timerStatus = 2;
             minutes = BREAK_TIMER_MINUTES;
@@ -61,7 +58,6 @@ const timerEnd = ():void => {
             updateTimer(BREAK_TIMER_MINUTES, BREAK_TIMER_SECONDS);
             break;
        case 2:
-            console.log('case 2')
             stopTimer();
             timerStatus = 1;
             minutes = INIT_TIMER_MINUTES;
@@ -102,7 +98,6 @@ const updateTimer = (minutes: number, seconds: number): void => {
 
 const runTimer = () => {
     if(timerStatus == 0) { 
-        console.log('hello');
         timerStatus = 1;
     }
     intervalId = setInterval(timerFunctionality, 1000)
@@ -113,7 +108,6 @@ const timerFunctionality = (): void => {
         updateTimer(minutes, seconds);
 
         if (!minutes && !seconds){
-            console.log('ended')
             timerEnd();
         }
     }
@@ -148,14 +142,12 @@ const pauseTimer = (): void => {
 const stopTimer = (): void => {
     switch(timerStatus){
         case 1:
-            console.log('stop case 1')
             minutes = INIT_TIMER_MINUTES;
             seconds = INIT_TIMER_SECONDS;
 
             updateTimer(INIT_TIMER_MINUTES, INIT_TIMER_SECONDS);
             break;
        case 2:
-            console.log('stop case 2')
             minutes = BREAK_TIMER_MINUTES;
             seconds = BREAK_TIMER_SECONDS;
 
@@ -180,8 +172,6 @@ const calcPercentage = ():number => {
     const now = running_timer - ((minutes*60) + seconds);
     const total = running_timer;
 
-    console.log('now:', now)
-    console.log('total:', total)
     return now*100/total;
 }
 
@@ -190,7 +180,6 @@ const updateTimerProgress = (percentage: number = calcPercentage()):void => {
         background: -webkit-linear-gradient(90deg, var(--continue_button_background) ${percentage}%, var(--text) ${percentage}%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent` ;
-    console.log(cssText);
     timer!.style.cssText = cssText;
 }
 
