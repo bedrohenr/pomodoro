@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, Notification } from 'electron';
 
 const createWindow = (): void => {
     const mainWindow = new BrowserWindow({
@@ -11,11 +11,17 @@ const createWindow = (): void => {
             contextIsolation: false
         }
     });
+
+    new Notification({
+        title: 'Teste',
+        body: 'Testee'
+    }).show()
+
     // Teste
     mainWindow.removeMenu();
     mainWindow.loadFile('src/index.html');
-    mainWindow.webContents.openDevTools();
 
+    // Window button commands
     ipcMain.on('minimize', () => {
         mainWindow.minimize();
     });
@@ -24,5 +30,4 @@ const createWindow = (): void => {
         mainWindow.close();
     });
 }
-
-app.on('ready', createWindow)
+app.on('ready', createWindow);
