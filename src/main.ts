@@ -1,5 +1,5 @@
 import { app, BrowserWindow, ipcMain, Notification } from 'electron';
-
+    
 const createWindow = (): void => {
     const mainWindow = new BrowserWindow({
         width: 300,
@@ -11,11 +11,6 @@ const createWindow = (): void => {
             contextIsolation: false
         }
     });
-
-    new Notification({
-        title: 'Teste',
-        body: 'Testee'
-    }).show()
 
     // Teste
     mainWindow.removeMenu();
@@ -29,5 +24,13 @@ const createWindow = (): void => {
     ipcMain.on('close', () => {
         mainWindow.close();
     });
+
+    ipcMain.on('showNotif',(event, title: string, body: string) => {
+        new Notification({
+            title: title,
+            body: body
+        }).show()
+    })
 }
+
 app.on('ready', createWindow);
