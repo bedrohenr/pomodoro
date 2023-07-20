@@ -23,6 +23,9 @@ const min_icon = document.getElementById('min-icon');
 const close_icon = document.getElementById('close-icon');
 const timer = document.getElementById('timer');
 
+/* SOUNDS VARIABLES */
+const clock_start_sound = new Audio("./assets/sounds/clock_start.wav");
+const clock_finish_sound = new Audio("./assets/sounds/clock_finish.wav");
 
 /* TIMER FUNCTIONALITY */
 const runClockwise = (): void => {
