@@ -8,20 +8,12 @@ Basic timer app, made with electron js
   - Display notification when start/end (Notification from electron package)
   - Make sound when start/end (Plain js audio.play())
 
-- Sped up demo
-<a href="https://imgur.com/IsEYzxH" target="_blank">
-	<img src="https://imgur.com/IsEYzxH" alt="pomodoro-app-sped-up-demo" width="100%">
-</a>
+<b>Sped up demo</b>
 
-<video width="100%" controls>
-  <source src="https://imgur.com/IsEYzxH" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-
-<blockquote class="imgur-embed-pub" lang="en" data-id="P9C0BOB"><a href="https://imgur.com/P9C0BOB">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<!-- Sped up Video -->
+https://github.com/ddrppx/pomodoro/assets/61296240/573550d1-c6d6-41f8-84f9-8670e513ed39
 
 - Normal demo
-<a href="https://imgur.com/P9C0BOB" target="_blank">
-	<img src="https://imgur.com/P9C0BOB" alt="pomodoro-app-normal-demo" width="100%">
-</a>
+
+https://github.com/ddrppx/pomodoro/assets/61296240/59182580-b857-4eec-bb99-bc67633a4055
 
