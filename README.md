@@ -13,7 +13,7 @@ Basic timer app, made with electron js
 <!-- Sped up Video -->
 https://github.com/ddrppx/pomodoro/assets/61296240/573550d1-c6d6-41f8-84f9-8670e513ed39
 
-- Normal demo
+<b>Normal demo</b>
 
 https://github.com/ddrppx/pomodoro/assets/61296240/59182580-b857-4eec-bb99-bc67633a4055
 
