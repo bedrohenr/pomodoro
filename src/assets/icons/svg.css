@@ -21,7 +21,7 @@ svg {
 }
 
 #min-icon:hover, #close-icon:hover {
-    outline: 1px solid var(--text)
+    outline: 1px solid var(--text);
 }
 
 
